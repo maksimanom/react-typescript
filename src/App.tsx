@@ -1,10 +1,16 @@
 import React from 'react';
 
-function App() {
+import { makeStyles } from "@material-ui/core/styles";
 
+import Header from "./Components/header";
+import setDefaultBoardsIfNoPresent from "./utils/setDefaultIfNoPresent";
+
+function App() {
+  setDefaultBoardsIfNoPresent();
+  
   return (
     <>
-    
+      <Header />
     </>
   );
 }
