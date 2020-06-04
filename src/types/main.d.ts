@@ -1,10 +1,10 @@
-interface taskData {
+interface TaskData {
   id: number;
   text: string;
   description: string;
 }
 
-declare interface boardData {
+declare interface BoardData {
   id: number;
   title: string;
   tasks: Array<taskData>;
