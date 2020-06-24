@@ -8,6 +8,7 @@ import CheckIcon from "@material-ui/icons/Check";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import AddTask from "./components/addTask";
 import ItemList from "./components/itemList/itemList";
+import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,14 +23,24 @@ const useStyles = makeStyles((theme: Theme) =>
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        "& .MuiCheckbox-root": {
+          color: "inherit",
+        },
+      },
+      "& .cell-wrapper-header": {
+        display: "flex",
+        color: "#fff",
       },
       "& .cell-wrapper": {
         display: "flex",
+        color: "inherit",
       },
       "& .headingRow": {
-        backgroundColor: "#f0f0f0",
         display: "flex",
         justifyContent: "space-between",
+        backgroundColor: theme.palette.primary.main,
+        color: "#fff",
+        borderRadius: 4,
       },
       "& .item-row": {
         display: "flex",
@@ -52,14 +63,14 @@ function App() {
   return (
     <Grid container className={classes.root}>
       <Grid item xs={10} className={classes.table}>
-        <div className="headingRow">
+        <Box className="headingRow" component="header">
           <div className="util-cell">
             <FormatListNumberedIcon />
           </div>
           <div className="util-cell">
             <TextFieldsIcon />
           </div>
-          <div className="cell-wrapper">
+          <div className="cell-wrapper-header">
             <div className="util-cell">
               <CheckIcon />
             </div>
@@ -67,7 +78,7 @@ function App() {
               <DeleteForeverIcon />
             </div>
           </div>
-        </div>
+        </Box>
         <div className="list-block">
           {toDoList.length &&
             toDoList.map((item, index) => {

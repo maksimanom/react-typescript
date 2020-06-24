@@ -1,22 +1,38 @@
 import React, { ChangeEvent, MouseEvent } from "react";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
-import classes from "*.module.css";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { TextField, Checkbox } from "@material-ui/core";
 import changeTask from "../../utils/changeTask";
 import changePerfomance from "../../utils/changePerfomance";
 import deleteTask from "../../utils/deleteTask";
+import classNames from "classnames";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: "flex",
       justifyContent: "space-between",
+      // color: theme.palette.primary.main,
+      color: "red",
       "& .item-text": {
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-start",
+        color: "inherit",
+        width: "100%",
+        "& .MuiInputBase-root": {
+          color: "inherit",
+        },
+        "& .MuiInput-underline:before": {
+          border: "none",
+        },
       },
+    },
+    taskUncompleted: {
+      color: theme.palette.primary.main,
+    },
+    taskCompleted: {
+      color: "rgba( 0 , 0 , 0 , 0.42 )",
     },
   })
 );
@@ -27,9 +43,7 @@ interface ItemCheckboxProps {
 }
 const ItemCheckbox: React.FC<ItemCheckboxProps> = (props) => {
   const { perf, handleClick } = props;
-  return (
-    <Checkbox color="primary" checked={perf} onClick={(e) => handleClick(e)} />
-  );
+  return <Checkbox checked={perf} onClick={(e) => handleClick(e)} />;
 };
 
 interface ItemListProps {
@@ -60,8 +74,14 @@ const ItemList: React.FC<ItemListProps> = (props) => {
   };
 
   return (
-    <div key={task.id} className={classes.root}>
-      <div className="util-cell">{index+1}</div>
+    <div
+      key={task.id}
+      className={classNames(
+        classes.root,
+        task.done ? classes.taskCompleted : classes.taskUncompleted
+      )}
+    >
+      <div className="util-cell">{index + 1}</div>
       <div className="item-text">
         <TextField
           fullWidth
