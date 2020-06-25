@@ -1,3 +1,6 @@
+## Read this first
+This repo contains multiple projects, so you need to look into `branches` in this.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
