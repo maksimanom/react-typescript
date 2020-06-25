@@ -3,7 +3,7 @@ const addTask = (
   setToDoList: Function,
   newItem: String
 ) => {
-  let maxId = Math.max.apply(
+  let maxId: number = Math.max.apply(
     null,
     toDoList.map((item) => item.id)
   );

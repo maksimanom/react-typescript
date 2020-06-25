@@ -59,7 +59,6 @@ function App() {
   const classes = useStyles();
   const [toDoList, setToDoList] = React.useState<ListItem[]>([]);
 
-  console.log("in main:", toDoList);
   return (
     <Grid container className={classes.root}>
       <Grid item xs={10} className={classes.table}>
@@ -89,11 +88,11 @@ function App() {
                   setToDoList={setToDoList}
                   index={index}
                   key={item.id}
-                ></ItemList>
+                />
               );
             })}
         </div>
-        <AddTask toDoList={toDoList} setToDoList={setToDoList}></AddTask>
+        <AddTask toDoList={toDoList} setToDoList={setToDoList} />
       </Grid>
     </Grid>
   );

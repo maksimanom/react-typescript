@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       display: "flex",
       justifyContent: "space-between",
-      // color: theme.palette.primary.main,
       color: "red",
       "& .item-text": {
         display: "flex",

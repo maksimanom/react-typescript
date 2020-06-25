@@ -3,7 +3,7 @@ const deleteTask = (
   setToDoList: Function,
   id: number
 ) => {
-  let toDoListCopy = [...toDoList];
+  const toDoListCopy = [...toDoList];
   const index = toDoListCopy.findIndex((item) => item.id === id);
   const firstPart = toDoListCopy.slice(0, index);
   const secondPart = toDoListCopy.slice(index + 1, toDoListCopy.length);
