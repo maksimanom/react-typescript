@@ -79,18 +79,17 @@ function App() {
           </div>
         </Box>
         <div className="list-block">
-          {toDoList.length &&
-            toDoList.map((item, index) => {
-              return (
-                <ItemList
-                  task={item}
-                  toDoList={toDoList}
-                  setToDoList={setToDoList}
-                  index={index}
-                  key={item.id}
-                />
-              );
-            })}
+          {toDoList.map((item, index) => {
+            return (
+              <ItemList
+                task={item}
+                toDoList={toDoList}
+                setToDoList={setToDoList}
+                index={index}
+                key={item.id}
+              />
+            );
+          })}
         </div>
         <AddTask toDoList={toDoList} setToDoList={setToDoList} />
       </Grid>
