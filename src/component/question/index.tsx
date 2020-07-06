@@ -13,7 +13,9 @@ import {
   InputLabel,
 } from "@material-ui/core/";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
 import changeType from "../../utils/changeType";
+import ShowAnswer from "../../hooks/useShowAnswer";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -66,6 +68,7 @@ const Question: React.FC<QuestionProps> = (props) => {
             <option value="description">Description</option>
           </Select>
         </FormControl>
+        <ShowAnswer type={question.type} answers={question.choice} />
       </AccordionDetails>
     </Accordion>
   );

@@ -2,7 +2,7 @@ declare interface QuestionInterface {
   id: number;
   type: string;
   title: string;
-  choice: string[];
+  choice: string[] | string;
 }
 declare interface TextQuestion {
   title: string;
