@@ -13,6 +13,7 @@ import {
   InputLabel,
 } from "@material-ui/core/";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import changeType from "../../utils/changeType";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,13 +25,20 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface QuestionProps {
   question: QuestionInterface;
+  questionsArray: QuestionInterface[];
+  setQuestions: Function;
 }
 const Question: React.FC<QuestionProps> = (props) => {
-  const { question } = props;
+  const { question, questionsArray, setQuestions } = props;
   const classes = useStyles();
 
   const handleChange = (e: ChangeEvent<{ value: unknown }>) => {
-    console.log(e.target.value);
+    changeType(
+      questionsArray,
+      setQuestions,
+      question.id,
+      e.currentTarget.value as string
+    );
   };
 
   return (
@@ -46,15 +54,16 @@ const Question: React.FC<QuestionProps> = (props) => {
         <FormControl>
           <InputLabel id="demo-simple-select-label">Type</InputLabel>
           <Select
+            native
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={question.type}
             onChange={handleChange}
           >
-            <MenuItem value="text">Text</MenuItem>
-            <MenuItem value="checkbox">Multiple</MenuItem>
-            <MenuItem value="radio">Single</MenuItem>
-            <MenuItem value="description">Description</MenuItem>
+            <option value="text">Text</option>
+            <option value="checkbox">Multiple</option>
+            <option value="radio">Single</option>
+            <option value="description">Description</option>
           </Select>
         </FormControl>
       </AccordionDetails>

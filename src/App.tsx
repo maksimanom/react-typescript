@@ -20,9 +20,9 @@ const useStyles = makeStyles((theme: Theme) =>
         padding: 0,
       },
     },
-    item:{
-      width: "100%"
-    }
+    item: {
+      width: "100%",
+    },
   })
 );
 
@@ -40,7 +40,14 @@ function App() {
       <CssBaseline />
       <Grid item xs={10} className={classes.item}>
         {questions.map((q, index) => {
-          return <Question key={q.id} question={q} />;
+          return (
+            <Question
+              key={q.id}
+              question={q}
+              questionsArray={questions}
+              setQuestions={setQuestions}
+            />
+          );
         })}
       </Grid>
       <Button variant="contained" color="primary" onClick={handleClick}>
